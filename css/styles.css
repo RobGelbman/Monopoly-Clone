@@ -1,31 +1,47 @@
 body{
   font-family: 'Josefin Sans', sans-serif;
   font-family: 'Open Sans', sans-serif;
+  background-image: url("../images/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .canvas-container{
-  position: relative;
+  /* position: relative; */
   height: 1000px;
-  width: 1000px;
+  width: 2000px;
+  
 }
 
 #monopolyPlayer{
   position: absolute;
-  left: 0px;
-  top: 0px;
+  left: 10px;
+  top: 10px;
   z-index: 2;
 }
 
 #monopolyBoardImages{
   position: absolute;
-  left: 0px;
-  top: 0px;
+  left: 10px;
+  top: 10px;
   z-index: 1;
 }
 
 #monopolyBoard{
   position: absolute;
-  left: 0px;
-  top: 0px;
+  left: 10px;
+  top: 10px;
   z-index: 0;
+}
+
+#playerInterface{
+  position: absolute;
+  left: 985px;
+  top: 10px;
+  height: 958px;
+  width:900px;
+  background-color: rgba(0, 226, 255, 0.7);
+  border-color: #c0e2ca;
+  border-width: 2px;
+  border-style: dotted;
 }
