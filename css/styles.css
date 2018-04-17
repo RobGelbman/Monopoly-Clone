@@ -3,6 +3,29 @@ body{
   font-family: 'Open Sans', sans-serif;
 }
 
-.hidden-img{
-  visibility: hidden;
+.canvas-container{
+  position: relative;
+  height: 1000px;
+  width: 1000px;
+}
+
+#monopolyPlayer{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 2;
+}
+
+#monopolyBoardImages{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 1;
+}
+
+#monopolyBoard{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 0;
 }

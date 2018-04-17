@@ -1,7 +1,11 @@
+var canvas = document.getElementById('monopolyPlayer');
+var ctx3 = canvas.getContext('2d');
+
 var Properties = [
   {name: "Mediterranean Avenue", type: "street", colorGroup: "indigo", cost: 60, rent: [2, 10, 30, 90, 160, 250], houseCost: 50, hotelCost: 50, housesOwned:0, hotelsOwned: 0, mortgageValue: 30, isMortgaged: false, isOwned:false},
   {name: "Baltic Avenue", type: "street", colorGroup: "indigo", cost: 60, rent: [4, 20, 60, 180, 320, 450], houseCost: 50, hotelCost: 50, housesOwned:0, hotelsOwned: 0, mortgageValue: 30, isMortgaged: false, isOwned:false},
   {name: "Oriental Avenue", type: "street", colorGroup: "lightBlue", cost: 100, rent: [6, 30, 90, 270, 400, 550], houseCost: 50, hotelCost: 50, housesOwned:0, hotelsOwned: 0, mortgageValue: 50, isMortgaged: false, isOwned:false},
+  {name: "Vermont Avenue", type: "street", colorGroup: "lightBlue", cost: 100, rent: [6, 30, 90, 270, 400, 550], houseCost: 50, hotelCost: 50, housesOwned:0, hotelsOwned: 0, mortgageValue: 50, isMortgaged: false, isOwned:false},
   {name: "Connecticut Avenue", type: "street", colorGroup: "lightBlue", cost: 120, rent: [8, 40, 100, 300, 450, 600], houseCost: 50, hotelCost: 50, housesOwned:0, hotelsOwned: 0, mortgageValue: 60, isMortgaged: false, isOwned:false},
   {name: "St. Charles Place", type: "street", colorGroup: "pink", cost: 140, rent: [10, 50, 150, 450, 625, 750], houseCost: 100, hotelCost: 100, housesOwned:0, hotelsOwned: 0, mortgageValue: 70, isMortgaged: false, isOwned:false},
   {name: "States Avenue", type: "street", colorGroup: "pink", cost: 140, rent: [10, 50, 150, 450, 625, 750], houseCost: 100, hotelCost: 100, housesOwned:0, hotelsOwned: 0, mortgageValue: 70, isMortgaged: false, isOwned:false},
@@ -28,6 +32,48 @@ var Properties = [
   {name: "Water Works", type: "utility", colorGroup: "util", cost: 150, rent: [4, 10], mortgageValue: 75, isMortgaged: false, isOwned:false}
 ]
 
+var boardGrid =[
+  {name: "Go", xMin: 841, xMax: 960, yMin: 841, yMax: 960}, 
+  {name: "Mediterranean Avenue", xMin: 761, xMax: 840, yMin: 841, yMax: 960}, 
+  {name: "Community Chest", xMin: 681, xMax: 760, yMin: 841, yMax: 960}, 
+  {name: "Baltic Avenue", xMin: 601, xMax: 680, yMin: 841, yMax: 960}, 
+  {name: "Income Tax", xMin: 521, xMax: 600, yMin: 841, yMax: 960}, 
+  {name: "Reading Railroad", xMin: 441, xMax: 520, yMin: 841, yMax: 960}, 
+  {name: "Oriental Avenue", xMin: 361, xMax: 440, yMin: 841, yMax: 960}, 
+  {name: "Chance", xMin: 281, xMax: 360, yMin: 841, yMax: 960}, 
+  {name: "Vermont Aveue", xMin: 201, xMax: 280, yMin: 841, yMax: 960}, 
+  {name: "Connecticut Avenue", xMin: 121, xMax: 200, yMin: 841, yMax: 960}, 
+  {name: "Just Visiting", xMin: 1, xMax: 120, yMin: 841, yMax: 960}, 
+  {name: "St. Charles Place", xMin: 1, xMax: 120, yMin: 761, yMax: 840}, 
+  {name: "Electric Company", xMin: 1, xMax: 120, yMin: 681, yMax: 760}, 
+  {name: "States Avenue", xMin: 1, xMax: 120, yMin: 601, yMax: 680}, 
+  {name: "Virginia Avenue", xMin: 1, xMax: 120, yMin: 521, yMax: 600}, 
+  {name: "Pennsylvania Railroad", xMin: 1, xMax: 120, yMin: 441, yMax: 520}, 
+  {name: "St. James Place", xMin: 1, xMax: 120, yMin: 361, yMax: 440}, 
+  {name: "Community Chest", xMin: 1, xMax: 120, yMin: 281, yMax: 360}, 
+  {name: "Tennessee Avenue", xMin: 1, xMax: 120, yMin: 201, yMax: 280},
+  {name: "New York Avenue", xMin: 1, xMax: 120, yMin: 121, yMax: 200}, 
+  {name: "Free Parking", xMin: 1, xMax: 120, yMin: 1, yMax: 120}, 
+  {name: "Kentucky Avenue", xMin: 121, xMax: 200, yMin: 1, yMax: 120}, 
+  {name: "Chance", xMin: 201, xMax: 280, yMin: 1, yMax:120}, 
+  {name: "Indiana Avenue", xMin: 281, xMax: 360, yMin: 1, yMax: 120}, 
+  {name: "Illinois Avenue", xMin: 361, xMax: 440, yMin: 1, yMax: 120}, 
+  {name: "B. & O. Railroad", xMin: 441, xMax: 520, yMin: 1, yMax: 120}, 
+  {name: "Atlantic Avenue", xMin: 521, xMax: 600, yMin: 1, yMax: 120}, 
+  {name: "Ventnor Avenue", xMin: 601, xMax: 680, yMin: 1, yMax: 120}, 
+  {name: "Water Works", xMin: 681, xMax: 760, yMin: 1, yMax: 120}, 
+  {name: "Marvin Gardens", xMin: 761, xMax: 840, yMin: 1, yMax: 120}, 
+  {name: "Go To Jail", xMin: 841, xMax: 960, yMin: 1, yMax: 120}, 
+  {name: "Pacific Avenue", xMin: 841, xMax: 960, yMin: 121, yMax: 200}, 
+  {name: "North Carolina Avenue", xMin: 841, xMax: 960, yMin: 201, yMax: 280}, 
+  {name: "Community Chest", xMin: 841, xMax: 960, yMin: 281, yMax:360}, 
+  {name: "Pennsylvania Avenue", xMin: 841, xMax: 960, yMin: 361, yMax: 440}, 
+  {name: "Short Line", xMin: 841, xMax: 960, yMin: 441, yMax: 520}, 
+  {name: "Chance", xMin: 841, xMax: 960, yMin: 521, yMax: 600}, 
+  {name: "Park Place", xMin: 841, xMax: 960, yMin: 601, yMax: 680}, 
+  {name: "Luxury Tax", xMin: 841, xMax: 960, yMin: 681, yMax: 760}, 
+  {name: "Boardwalk", xMin: 841, xMax: 960, yMin: 761, yMax: 840}]
+
 var bank = 15140;
 var houses = 32;
 var hotels = 12;
@@ -37,6 +83,7 @@ var hotels = 12;
 var numberOfDice = 2;
 var diceRoll = [];
 var doublesRolled = false;
+var consecutiveDoubles = 0;
 
 //DICE FUNCTIONS
 function roll(){
@@ -56,3 +103,65 @@ function isDoubles(diceArr){
 
   return doublesRolled;
 }
+
+//PLAYER OBJECT
+function Player(nameArg, tokenArg){
+  this.name = nameArg;
+  this.token = tokenArg;
+  this.money = 0;
+  this.propertiesOwned = [];
+  this.communityChestJailCard = false;
+  this.chanceJailCard = false;
+  this.inJail = false;
+  this.x = 0;
+  this.y = 0
+  this.currentLocation = [this.Player.x, this.Player.y];
+}
+
+Player.prototype.buyProperty = function(propertyName, propertyCost){
+  if (this.money - propertyCost >= 0){
+    this.propertiesOwned.push(propertyName);
+    this.money -= PropertyCost;
+    return true;
+  }
+
+  return false;
+}
+
+Player.prototype.buyHouse = function(){
+
+}
+
+Player.prototype.sellHouse = function(){
+
+}
+
+Player.prototype.buyHotel = function(){
+
+}
+
+Player.prototype.sellHotel = function(){
+  
+}
+
+Player.prototype.mortgageProperty = function(){
+
+}
+
+Player.prototype.unMortgageProperty = function(){
+
+}
+
+
+
+
+function moveToken(){
+
+}
+  
+  
+  // var img = new Image();
+  // img.onload = function () {
+  //   ctx3.drawImage(img, 900, 900);
+  // }
+  // img.src = "./images/tokens/dog.png";

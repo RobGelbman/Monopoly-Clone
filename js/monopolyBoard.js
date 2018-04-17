@@ -3,7 +3,7 @@ var ctx = canvas.getContext('2d');
 
 function draw() {
   
-  ctx.scale(1.01, 1.01)
+  // ctx.scale(.75, .75)
 
   
   // //board-border
@@ -285,7 +285,9 @@ function drawProperties(){
   
   // Light Blue & Indigo Properties Panel
   ctx.font = "12px Josefin Sans";
-  ctx.fillText("VISITING", 46, 948);    
+  ctx.fillText("VISITING", 46, 948);
+  
+  
 
   ctx.font = "12px Josefin Sans";
   ctx.fillText("Connecticut", 128 ,886);
@@ -300,7 +302,9 @@ function drawProperties(){
   ctx.fillText("$100",227,955);
   
   ctx.font = "12px Josefin Sans";
-  ctx.fillText("Chance", 300, 867);
+  ctx.fillText("Chance", 300, 863);
+
+
   
   ctx.font = "12px Josefin Sans";
   ctx.fillText("Oriental", 377 ,886);
@@ -334,9 +338,9 @@ function drawProperties(){
   ctx.font = "11px Josefin Sans";
   ctx.fillText("$60",629,955);
   
-  ctx.font = "14px Josefin Sans";
-  ctx.fillText("Community", 685, 862);
-  ctx.fillText("Chest", 704, 878);
+  ctx.font = "12px Josefin Sans";
+  ctx.fillText("Community", 690, 860);
+  ctx.fillText("Chest", 707, 876);
   ctx.font = "9px Josefin Sans";
   ctx.fillText("Follow Instructions",684,943);             
   ctx.fillText("On Card",705,955);
@@ -375,9 +379,9 @@ function drawProperties(){
   ctx.font = "11px Josefin Sans";
   ctx.fillText("$180",104, 70);
   
-  ctx.font = "14px Josefin Sans";
-  ctx.fillText("Community", 160, -29);
-  ctx.fillText("Chest", 177, -13);
+  ctx.font = "12px Josefin Sans";
+  ctx.fillText("Community", 165, -29);
+  ctx.fillText("Chest", 180, -13);
   ctx.font = "9px Josefin Sans";
   ctx.fillText("Follow Instructions",158,57);             
   ctx.fillText("On Card",178,69);
@@ -479,7 +483,7 @@ function drawProperties(){
   ctx.fillText("$220",504, 70);
   
   ctx.font = "12px Josefin Sans";
-  ctx.fillText("Chance", 576, -19);
+  ctx.fillText("Chance", 576, -24);
   
   ctx.font = "12px Josefin Sans";
   ctx.fillText("Kentucky", 653 , 0);
@@ -509,8 +513,8 @@ function drawProperties(){
   ctx.fillText("$400",24,70);
   
   ctx.font = "14px Josefin Sans";
-  ctx.fillText("LUXURY", 88, -14);
-  ctx.fillText("TAX", 103, 0);
+  ctx.fillText("LUXURY", 88, -23);
+  ctx.fillText("TAX", 103, -9);
   ctx.font = "12px Josefin Sans";
   ctx.fillText("PAY $75", 95, 60);
   
@@ -521,7 +525,7 @@ function drawProperties(){
   ctx.fillText("$350", 184, 70);
   
   ctx.font = "12px Josefin Sans";
-  ctx.fillText("Chance", 257, -19);
+  ctx.fillText("Chance", 257, -23);
   
   ctx.fillText("Short", 341, -27);
   ctx.fillText("Line", 344, -13);
@@ -535,9 +539,9 @@ function drawProperties(){
   ctx.font = "11px Josefin Sans";
   ctx.fillText("$320", 424, 70);
   
-  ctx.font = "14px Josefin Sans";
-  ctx.fillText("Community", 481, -29);
-  ctx.fillText("Chest", 498, -13);
+  ctx.font = "12px Josefin Sans";
+  ctx.fillText("Community", 485, -29);
+  ctx.fillText("Chest", 500, -13);
   ctx.font = "9px Josefin Sans";
   ctx.fillText("Follow Instructions", 479, 57);
   ctx.fillText("On Card", 499, 69);
@@ -558,6 +562,14 @@ function drawProperties(){
   ctx.restore();
 }
 
+function drawIcons(){
+  var img3 = new Image();
+  img3.onload = function () {
+  ctx.drawImage(img3, 300, 877);
+  }
+  img3.src = "./images/board-images/chance_pink.png";
+}
+
 WebFont.load({
     google: {
       families: ['Josefin Sans', 'Open Sans']
@@ -565,6 +577,7 @@ WebFont.load({
   active: function() {
     draw();
     drawProperties();
+    drawIcons();
   }
   });
 
