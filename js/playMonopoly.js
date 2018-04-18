@@ -10,4 +10,6 @@ gamePlayers.push(player1);
 var player2 = new Player("Player 2", "dog");
 gamePlayers.push(player2);
 player1.rollDice();
+player2.rollDice();
+
 console.log(gamePlayers, "   ", player1.diceRoll);

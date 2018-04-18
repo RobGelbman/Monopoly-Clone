@@ -40,6 +40,34 @@ body{
   top: 10px;
   height: 958px;
   width:800px;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.5);
   border: 2px dotted #c0e2ca;
+  color: white;
+  display: flex;
+  font-family: "Josefin Sans";
 }
+
+.instructions{
+  overflow: auto;
+}
+
+.instructions h1{  
+  font-weight: 700;
+  font-size: 3em;
+  justify-content: center;
+}
+
+.instructions h3{  
+  text-decoration: underline;
+}
+
+/* #playerInterface{
+  position: absolute;
+  left: 171px;
+  top: 131px;
+  height: 719px;
+  width:719px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solided #000000;
+  z-index: 3;
+} */

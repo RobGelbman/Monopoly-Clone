@@ -1,4 +1,4 @@
-  var canvas = document.getElementById('monopolyPlayer');
+  var canvas = document.getElementById('monopolyBoardImages');
   var ctx2 = canvas.getContext('2d');
   
   var go = new Image();

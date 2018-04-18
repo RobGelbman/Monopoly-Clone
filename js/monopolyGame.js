@@ -41,7 +41,7 @@ function MonopolyGame(){
     {name: "Chance", xMin: 281, xMax: 360, yMin: 841, yMax: 960}, 
     {name: "Vermont Aveue", xMin: 201, xMax: 280, yMin: 841, yMax: 960}, 
     {name: "Connecticut Avenue", xMin: 121, xMax: 200, yMin: 841, yMax: 960}, 
-    {name: "Just Visiting", xMin: 1, xMax: 120, yMin: 841, yMax: 960}, 
+    {name: "Just Visiting", xMin: 0, xMax: 120, yMin: 841, yMax: 960}, 
     {name: "St. Charles Place", xMin: 1, xMax: 120, yMin: 761, yMax: 840}, 
     {name: "Electric Company", xMin: 1, xMax: 120, yMin: 681, yMax: 760}, 
     {name: "States Avenue", xMin: 1, xMax: 120, yMin: 601, yMax: 680}, 
