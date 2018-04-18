@@ -76,33 +76,4 @@ function MonopolyGame(){
   this.houses = 32;
   this.hotels = 12;
   this.tokenArray = ["dog", "car", "iron", "ship", "shoe", "thimble", "top-hat", "wheel-barrow"];
-
-  this.gamePlayers = [];
-  this.curentTurn = 0;
-
-  //DICE VARIABLES
-  this.numberOfDice = 2;
-  this.diceRoll = [];
-  this.totalDiceRoll = 0;
-  this.doublesRolled = false;
-  this.consecutiveDoubles = 0;
-
-  //DICE FUNCTIONS
-  MonopolyGame.prototype.rollDice = function(){
-  for (x=1; x <= this.numberOfDice; x++){
-    this.diceRoll.push(Math.ceil(Math.random() * 6));
-  }
-  this.totalDiceRoll = this.diceRoll[0] + this.diceRoll[1];
-  return this.diceRoll[0] + this.diceRoll[1];
-  }
-
-  MonopolyGame.prototype.isDoubles = function(diceArr){
-    if (diceArr[0] === diceArr[1]){
-      this.doublesRolled = true;
-    } else {
-      this.doublesRolled = false;
-    }
-
-    return this.doublesRolled;
-  }
 }

@@ -15,33 +15,31 @@ body{
 
 #monopolyPlayer{
   position: absolute;
-  left: 10px;
+  left: 50px;
   top: 10px;
   z-index: 2;
 }
 
 #monopolyBoardImages{
   position: absolute;
-  left: 10px;
+  left: 50px;
   top: 10px;
   z-index: 1;
 }
 
 #monopolyBoard{
   position: absolute;
-  left: 10px;
+  left: 50px;
   top: 10px;
   z-index: 0;
 }
 
 #playerInterface{
   position: absolute;
-  left: 985px;
+  left: 1050px;
   top: 10px;
   height: 958px;
-  width:900px;
-  background-color: rgba(0, 226, 255, 0.7);
-  border-color: #c0e2ca;
-  border-width: 2px;
-  border-style: dotted;
+  width:800px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 2px dotted #c0e2ca;
 }
