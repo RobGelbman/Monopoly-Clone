@@ -408,7 +408,7 @@ function drawProperties(){
   ctx.fillText("States", 500, 0);
   ctx.fillText("Avenue", 497 , 15);
   ctx.font = "11px Josefin Sans";
-  ctx.fillText("$180", 504, 70);
+  ctx.fillText("$140", 504, 70);
   
   ctx.font = "12px Josefin Sans";
   ctx.fillText("Electric", 575, -25);
@@ -420,7 +420,7 @@ function drawProperties(){
   ctx.fillText("St. Charles", 646, 0);
   ctx.fillText("Place", 663, 15);
   ctx.font = "11px Josefin Sans";
-  ctx.fillText("$180", 664, 70);
+  ctx.fillText("$140", 664, 70);
   
   ctx.font = "12px Josefin Sans";
   ctx.fillText("JUST", 746, 62);

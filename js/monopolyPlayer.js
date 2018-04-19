@@ -20,6 +20,7 @@ function Player(nameArg, tokenArg){
   this.x = 880;
   this.y = yLevel;
   this.currentLocation;
+  this.currentPropertyIndex = -1;
   this.diceRoll = [];
   this.totalDiceRoll = 0;
   this.doublesRolled = false;
@@ -103,11 +104,11 @@ Player.prototype.updateCanvas = function(){
 }
 
 Player.prototype.redrawOTherTokens = function(){
-  for (i=0; i < gamePlayers.length; i++){
-    if (gamePlayers[i].name != this.name){
-      var redrawToken = gamePlayers[i].token;
-      var redrawX = gamePlayers[i].x;
-      var redrawY = gamePlayers[i].y;
+  for (i=0; i < monopolyGame.gamePlayers.length; i++){
+    if (monopolyGame.gamePlayers[i].name != this.name){
+      var redrawToken = monopolyGame.gamePlayers[i].token;
+      var redrawX = monopolyGame.gamePlayers[i].x;
+      var redrawY = monopolyGame.gamePlayers[i].y;
       var playerToken = new Image();
       playerToken.onload = function () {
         ctx3.drawImage(playerToken, redrawX, redrawY);
@@ -223,31 +224,56 @@ Player.prototype.findLocation = function(gridArray, currentX, currentY, minX, ma
 
 // CHECK TYPE OF PROPERTY: STREET, RAILROAD, UTILTY, COMMUNITY CHEST, CHANCE , INCOME TAX, LUXURY TAX OR GO TO JAIL.
 Player.prototype.checkLocationType = function(){
+  // var tempLocation = this.currentLocation;
   for (var i = 0; i < monopolyGame.properties.length; i++) {
-    if (monopolyGame.properties[i].name === this.currentLocation) {
-      
-    } else if (monopolyGame.properties[i].name === "Chance" || monopolyGame.properties[i].name === "Community Chest"){
+    console.log(this.currentLocation)
+    if (this.currentLocation === monopolyGame.properties[i].name) {
 
-    } else if (monopolyGame.properties[i].name === "Go To Jail"){
-
-    } else if (monopolyGame.properties[i].name === "Income Tax"){
-
-    } else if (monopolyGame.properties[i].name === "Luxury Tax"){
-      this.money -= 75;
+      this.currentPropertyIndex = i;
+      this.propertyStatus();
     }
   }
 
-
+  if (this.currentLocation === "Chance" || this.currentLocation === "Community Chest"){
+      // CALL CARD FUNCTION
+  } else if (this.currentLocation === "Go To Jail" ){
+    // CALL GO TO JAIL FUNCTION
+  } else if (this.currentLocation === "Income Tax"){
+    // CALL INCOME TAX FUNCTION
+  } else if (this.currentLocation === "Luxury Tax"){
+    this.money -= 75;
+  }
 }
 
-Player.prototype.buyProperty = function(propertyName, propertyCost){
-  if (this.money - propertyCost >= 0){
-    this.propertiesOwned.push(propertyName);
-    this.money -= PropertyCost;
+Player.prototype.propertyStatus = function(){
+  console.log(monopolyGame.properties[this.currentPropertyIndex].isOwned)
+  if (monopolyGame.properties[this.currentPropertyIndex].isOwned && !(this.propertiesOwned.includes(monopolyGame.properties[this.currentPropertyIndex].name))){
+    console.log("IN FIRST IF on PROPERTY STATUS")
+    if (!(monopolyGame.properties[this.currentPropertyIndex].isMortgaged)){
+      //CALL PAY RENT FUNCTION
+    }
+  } else if (!(monopolyGame.properties[this.currentPropertyIndex].isOwned)){
+    // BUY PROPERTY FUNCTION
+    console.log("IN STATUS- BUY")
+    if(this.canAfford(monopolyGame.properties[this.currentPropertyIndex].cost)){
+      this.buyProperty(monopolyGame.properties[this.currentPropertyIndex].name, monopolyGame.properties[this.currentPropertyIndex].cost )
+    }
+  }
+}
+
+Player.prototype.canAfford = function(itemCost){
+  if (this.money - itemCost >= 0){
     return true;
   }
 
   return false;
+}
+
+Player.prototype.buyProperty = function(propertyName, propertyCost){  
+    this.propertiesOwned.push(propertyName);
+    this.money -= propertyCost;
+    monopolyGame.properties[this.currentPropertyIndex].isOwned = true;
+
 }
 
 Player.prototype.buyHouse = function(){

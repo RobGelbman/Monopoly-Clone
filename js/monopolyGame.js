@@ -3,7 +3,7 @@ function MonopolyGame(){
     {name: "Mediterranean Avenue", type: "street", colorGroup: "indigo", cost: 60, rent: [2, 10, 30, 90, 160, 250], houseCost: 50, hotelCost: 50, housesOwned:0, hotelsOwned: 0, mortgageValue: 30, isMortgaged: false, isOwned:false},
     {name: "Baltic Avenue", type: "street", colorGroup: "indigo", cost: 60, rent: [4, 20, 60, 180, 320, 450], houseCost: 50, hotelCost: 50, housesOwned:0, hotelsOwned: 0, mortgageValue: 30, isMortgaged: false, isOwned:false},
     {name: "Oriental Avenue", type: "street", colorGroup: "lightBlue", cost: 100, rent: [6, 30, 90, 270, 400, 550], houseCost: 50, hotelCost: 50, housesOwned:0, hotelsOwned: 0, mortgageValue: 50, isMortgaged: false, isOwned:false},
-    {name: "Vermont Avenue", type: "street", colorGroup: "lightBlue", cost: 100, rent: [6, 30, 90, 270, 400, 550], houseCost: 50, hotelCost: 50, housesOwned:0, hotelsOwned: 0, mortgageValue: 50, isMortgaged: false, isOwned:false},
+    {name: "Vermont Avenue", type: "street", colorGroup: "lightBlue", cost: 100, rent: [6, 30, 90, 270, 400, 550], houseCost: 50, hotelCost: 50, housesOwned:0, hotelsOwned: 0, mortgageValue: 50, isMortgaged: false, isOwned:true},
     {name: "Connecticut Avenue", type: "street", colorGroup: "lightBlue", cost: 120, rent: [8, 40, 100, 300, 450, 600], houseCost: 50, hotelCost: 50, housesOwned:0, hotelsOwned: 0, mortgageValue: 60, isMortgaged: false, isOwned:false},
     {name: "St. Charles Place", type: "street", colorGroup: "pink", cost: 140, rent: [10, 50, 150, 450, 625, 750], houseCost: 100, hotelCost: 100, housesOwned:0, hotelsOwned: 0, mortgageValue: 70, isMortgaged: false, isOwned:false},
     {name: "States Avenue", type: "street", colorGroup: "pink", cost: 140, rent: [10, 50, 150, 450, 625, 750], houseCost: 100, hotelCost: 100, housesOwned:0, hotelsOwned: 0, mortgageValue: 70, isMortgaged: false, isOwned:false},
@@ -76,4 +76,15 @@ function MonopolyGame(){
   this.houses = 32;
   this.hotels = 12;
   this.tokenArray = ["dog", "car", "iron", "ship", "shoe", "thimble", "top-hat", "wheel-barrow"];
+  this.gamePlayers = [];
+  this.currentTurn = 0;
 }
+
+var monopolyGame = new MonopolyGame;
+var player1 = new Player("Player 1", "car");
+monopolyGame.gamePlayers.push(player1);
+var player2 = new Player("Player 2", "dog");
+monopolyGame.gamePlayers.push(player2);
+player2.propertiesOwned.push("Vermont Avenue");
+player1.rollDice();
+player1.move();
