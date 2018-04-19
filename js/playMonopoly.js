@@ -10,6 +10,16 @@ gamePlayers.push(player1);
 var player2 = new Player("Player 2", "dog");
 gamePlayers.push(player2);
 player1.rollDice();
-player2.rollDice();
+player1.move();
+setTimeout(function (){}, 5000)
+player1.rollDice();
+player1.move();
+setTimeout(function (){}, 5000)
+player1.rollDice();
+player1.move();
+setTimeout(function (){}, 5000)
+player1.rollDice();
+player1.move();
+// player2.rollDice();
 
-console.log(gamePlayers, "   ", player1.diceRoll);
+// console.log(gamePlayers, "   ", player1.diceRoll);

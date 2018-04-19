@@ -12,30 +12,34 @@
   </head>
   <body>
     <div class = "canvas-container">
+      <canvas id="monopolyDisplay" height="962" width="962"></canvas>
       <canvas id="monopolyPlayer" height="962" width="962"></canvas>
       <canvas id="monopolyBoardImages" height="962" width="962"></canvas>
       <canvas id="monopolyBoard" height="962" width="962"></canvas>
     </div>
     <div id="playerInterface">
-      <div class="instructions">
-        <h1>MONOPOLY</h1>
-        <h3>OBJECT</h3>
-        <p>The object of the game is to become the wealthiest player through buying, renting and selling property</p>
-        <h3>RULES</h3>
-        <p>On a player's turn, the player must roll the dice and move their token forward the number of spaces as rolled on the dice.</p>
-        <p>If the player lands on an unowned property, the player may buy it for the price listed on that property's space. If he or she agrees to buy it, he or she pays the Bank the amount 
-          shown on the property space and receives the deed for that property. </p>
-        <p>If the player lands on an unmortgaged property owned by another player, he or she pays rent to that person, as specified on the property's deed.</p>
-        <p>If the player lands on his or her own property, or on property which is owned by another player but currently mortgaged, nothing happens.</p>
-        <p>If the player lands on Luxury Tax, he or she must pay the Bank $75.</p>
-        <p>If the player lands on Income Tax he or she must pay the Bank either $200 or 10% of his or her total assets (cash on hand, property, houses and hotels).</p>
-        <p>If the player lands on a Chance or Community Chest, the player takes a card from the top of the respective pack and performs the instruction given on the card.</p>
-        <p>If the player lands on the Jail space, he or she is "Just Visiting". No penalty applies.</p>
-        <p>If the player lands on the Go to Jail square, he or she must move his token directly to Jail.</p>
-        <p>If the player lands on or passes Go in the course of his or her turn, he or she receives $200 from the Bank.</p>
-        <p>You may sell houses back to the Bank for half the purchase price or sell property deeds to other players in the game.</p>
+      <div class = "flex-container">
+        <div class="instructions">
+          <h1>MONOPOLY</h1>
+          <h3>OBJECT</h3>
+          <p>The object of the game is to become the wealthiest player through buying, renting and selling property</p>
+          <h3>RULES</h3>
+          <p>On a player's turn, the player must roll the dice and move their token forward the number of spaces as rolled on the dice.</p>
+          <p>If the player lands on an unowned property, the player may buy it for the price listed on that property's space. If he or she agrees to buy it, he or she pays the Bank the amount shown on the property space and receives the deed for that property. </p>
+          <p>If the player lands on an unmortgaged property owned by another player, he or she pays rent to that person, as specified on the property's deed.</p>
+          <p>If the player lands on his or her own property, or on property which is owned by another player but currently mortgaged, nothing happens.</p>
+          <p>If the player lands on Luxury Tax, he or she must pay the Bank $75.</p>
+          <p>If the player lands on Income Tax he or she must pay the Bank either $200 or 10% of his or her total assets (cash on hand, property, houses and hotels).</p>
+          <p>If the player lands on a Chance or Community Chest, the player takes a card from the top of the respective pack and performs the instruction given on the card.</p>
+          <p>If the player lands on the Jail space, he or she is "Just Visiting". No penalty applies.</p>
+          <p>If the player lands on the Go to Jail square, he or she must move his token directly to Jail.</p>
+          <p>If the player lands on or passes Go in the course of his or her turn, he or she receives $200 from the Bank.</p>
+          <p>You may sell houses back to the Bank for half the purchase price or sell property deeds to other players in the game.</p>
+        </div>
+        <div id="controls">
+          <button type="button">PLAY GAME</button>
+        </div>
       </div>
-            
     </div>
 
     <script type="text/javascript" src="js/monopolyBoard.js"></script>

@@ -13,6 +13,13 @@ body{
   
 }
 
+#monopolyDisplay{
+  position: absolute;
+  left: 50px;
+  top: 10px;
+  z-index: 2;
+}
+
 #monopolyPlayer{
   position: absolute;
   left: 50px;
@@ -47,18 +54,42 @@ body{
   font-family: "Josefin Sans";
 }
 
+#controls{
+  align-self: center;
+}
+
+.flex-container{
+  display: flex;
+  flex-direction: column;
+}
+
 .instructions{
   overflow: auto;
+  flex-grow: 1;
 }
 
 .instructions h1{  
   font-weight: 700;
   font-size: 3em;
-  justify-content: center;
+  
 }
 
 .instructions h3{  
   text-decoration: underline;
+}
+
+button{
+  background-color: #13a857; 
+  font-family: 'Josefin Sans';
+  border: 1px solid #FFF;
+  color: #FFF;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+  margin-bottom: 25px;
 }
 
 /* #playerInterface{
