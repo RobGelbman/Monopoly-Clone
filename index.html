@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,700" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
@@ -19,8 +20,13 @@
     </div>
     <div id="playerInterface">
       <div class = "flex-container">
-        <h1>MONOPOLY</h1>
-        <div class="instructions">
+        <div class = "flex-row">
+          <h1>MONOPOLY</h1>
+        </div>
+        <div class="player-info">
+          
+        </div>
+        <div id= "instructions" class="instructions">
           <h3>OBJECT</h3>
           <p>The object of the game is to become the wealthiest player through buying, renting and selling property</p>
           <h3>RULES</h3>
@@ -37,7 +43,8 @@
           <p>You may sell houses back to the Bank for half the purchase price or sell property deeds to other players in the game.</p>
         </div>
         <div id="controls">
-          <button type="button">PLAY GAME</button>
+          <button class="play-game" type="button" id="play-game-button">PLAY GAME</button>
+          <button class="roll-dice" type="button" id="roll-dice-button">ROLL DICE</button>
         </div>
       </div>
     </div>

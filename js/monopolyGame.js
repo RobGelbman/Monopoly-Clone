@@ -3,7 +3,7 @@ function MonopolyGame(){
     {name: "Mediterranean Avenue", type: "street", colorGroup: "indigo", cost: 60, rent: [2, 10, 30, 90, 160, 250], houseCost: 50, hotelCost: 50, housesOwned:0, hotelsOwned: 0, mortgageValue: 30, isMortgaged: false, isOwned:false},
     {name: "Baltic Avenue", type: "street", colorGroup: "indigo", cost: 60, rent: [4, 20, 60, 180, 320, 450], houseCost: 50, hotelCost: 50, housesOwned:0, hotelsOwned: 0, mortgageValue: 30, isMortgaged: false, isOwned:false},
     {name: "Oriental Avenue", type: "street", colorGroup: "lightBlue", cost: 100, rent: [6, 30, 90, 270, 400, 550], houseCost: 50, hotelCost: 50, housesOwned:0, hotelsOwned: 0, mortgageValue: 50, isMortgaged: false, isOwned:false},
-    {name: "Vermont Avenue", type: "street", colorGroup: "lightBlue", cost: 100, rent: [6, 30, 90, 270, 400, 550], houseCost: 50, hotelCost: 50, housesOwned: 0, hotelsOwned: 0, mortgageValue: 50, isMortgaged: false, isOwned:true},
+    {name: "Vermont Avenue", type: "street", colorGroup: "lightBlue", cost: 100, rent: [6, 30, 90, 270, 400, 550], houseCost: 50, hotelCost: 50, housesOwned: 0, hotelsOwned: 0, mortgageValue: 50, isMortgaged: false, isOwned:false},
     {name: "Connecticut Avenue", type: "street", colorGroup: "lightBlue", cost: 120, rent: [8, 40, 100, 300, 450, 600], houseCost: 50, hotelCost: 50, housesOwned:0, hotelsOwned: 0, mortgageValue: 60, isMortgaged: false, isOwned:false},
     {name: "St. Charles Place", type: "street", colorGroup: "pink", cost: 140, rent: [10, 50, 150, 450, 625, 750], houseCost: 100, hotelCost: 100, housesOwned:0, hotelsOwned: 0, mortgageValue: 70, isMortgaged: false, isOwned:false},
     {name: "States Avenue", type: "street", colorGroup: "pink", cost: 140, rent: [10, 50, 150, 450, 625, 750], houseCost: 100, hotelCost: 100, housesOwned:0, hotelsOwned: 0, mortgageValue: 70, isMortgaged: false, isOwned:false},
@@ -78,13 +78,174 @@ function MonopolyGame(){
   this.tokenArray = ["dog", "car", "iron", "ship", "shoe", "thimble", "top-hat", "wheel-barrow"];
   this.gamePlayers = [];
   this.currentTurn = 0;
+
+  // MonopolyGame.prototype.startGame = function(){
+  //   var deleteNode = document.getElementById("instructions");
+  //   deleteNode.parentNode.removeChild(deleteNode);
+  //   var deleteNode = document.getElementById("play-game-button");
+  //   deleteNode.parentNode.removeChild(deleteNode);
+  //   this.deleteRulesNode();
+  //   // this.addPlayerHeader();
+  // }
+
+  // MonopolyGame.prototype.deleteRulesNode = function(){
+  //   var deleteNode = document.getElementById("instructions");
+  //   deleteNode.parentNode.removeChild(deleteNode);
+  //   var deleteNode = document.getElementById("play-game-button");
+  //   deleteNode.parentNode.removeChild(deleteNode);
+  // }
+  
+  // MonopolyGame.prototype.addPlayerHeader = function(){
+  //   var headerHtml = "<div class = 'header'><h2>PLAYER INFO</h2></div>"
+  //   // $('.player-info').append(headerHtml);
+  // }
+
+  
+  
+  // MonopolyGame.prototype.addPlayerStats = function(player){
+  //   var playerstats = "<div class='" + player.name.split(" ").join("-") + "'>";
+  //   playerstats += "<div class='player-header'>";
+  //   playerstats += "<img src='images/tokens/" + player.token + ".png'>";
+  //   playerstats += "<h2>" + player.name + "</h2>";
+  //   playerstats += "<h2>$" + player.money + "</h2>";
+  //   playerstats += "</div>";
+  //   playerstats += "<div class='properties'>";
+  //   playerstats += "</div>";
+  //   playerstats += "</div>";
+
+  //   $('.player-info').append(playerstats);
+  // }
+
+  // MonopolyGame.prototype.turn = function(){
+  //   if (this.currentTurn === this.gamePlayers.length){
+  //     this.currentTurn = 0
+  //   }
+
+  //   this.gamePlayers[this.currentTurn].rollDice();
+  //   this.currentTurn++;
+  // }
+
 }
 
 var monopolyGame = new MonopolyGame;
-var player1 = new Player("Player 1", "car");
-monopolyGame.gamePlayers.push(player1);
-var player2 = new Player("Player 2", "dog");
-monopolyGame.gamePlayers.push(player2);
-player2.propertiesOwned.push("Vermont Avenue");
+var player1;
+var player2;
+var rollBTN = document.getElementById("roll-dice-button");
+rollBTN.style.display = "none";
+
+
+function startGame(){
+  player1 = new Player("Player 1", "car");
+  monopolyGame.gamePlayers.push(player1);
+  player2 = new Player("Player 2", "dog");
+  monopolyGame.gamePlayers.push(player2);
+  // var timeoutId = setTimeout(function () {
+    deleteRulesNode();
+    addPlayerHeader();
+    
+    
+    rollBTN.style.visibility = "show";
+  // }, 1000);
+  // deleteRulesNode();
+  // addPlayerHeader();
+  // addRollButton();
+ 
+  
+}
+
+ function deleteRulesNode(){
+  var deleteNode = document.getElementById("instructions");
+  deleteNode.parentNode.removeChild(deleteNode);
+  var deleteNode = document.getElementById("play-game-button");
+  deleteNode.parentNode.removeChild(deleteNode);
+}
+
+function addPlayerHeader(){
+  var headerHtml = document.createElement("div");
+  headerHtml.setAttribute("class", "header");
+  var headerText = document.createElement("h2");
+  headerText.innerHTML = "PLAYER INFO";
+  headerHtml.appendChild(headerText);
+  parent = document.getElementsByClassName("player-info");
+  parent[0].append(headerHtml);
+  addPlayerStats();
+  // $('.player-info').append(headerHtml);
+}
+
+
+
+function addPlayerStats(){
+  for (x=0; 0 < monopolyGame.gamePlayers.length; x++){
+    var playerInventory = document.createElement("div");
+    var tempName = monopolyGame.gamePlayers[x].name
+    console.log(monopolyGame.gamePlayers[x].name);
+    playerInventory.setAttribute("class", tempName)
+    var playerHeader = document.createElement("div");
+    playerHeader.setAttribute("class", "player-header");
+    var playerImg = document.createElement("img");
+    playerImg.setAttribute("src", "images/tokens/" + monopolyGame.gamePlayers[x].token + ".png");
+    playerName = document.createElement("h2");
+    playerName.innerHTML = monopolyGame.gamePlayers[x].name;
+    var playerMoney = document.createElement("h2");
+    playerMoney.setAttribute("id", monopolyGame.gamePlayers[x].name.split(" ").join("-"))
+    playerMoney.innerHTML = "$" + monopolyGame.gamePlayers[x].money;
+    var propertyDiv = document.createElement("div");
+    propertyDiv.setAttribute("class", "properties");
+    playerHeader.appendChild(playerImg);
+    playerHeader.appendChild(playerName);
+    playerHeader.appendChild(playerMoney);
+    playerInventory.appendChild(playerHeader);
+    playerInventory.appendChild(propertyDiv);
+    parent = document.getElementsByClassName("player-info");
+    parent[0].append(playerInventory);
+  }
+  
+}
+
+function addRollButton(){
+  var rollBTN = document.getElementById("roll-dice-button");
+  rollBTN.style.display = "inline"
+  // var playerRollButton = document.createElement("button");
+  // playerRollButton.setAttribute("class", "roll-dice");
+  // playerRollButton.setAttribute("type", "button")
+  // playerRollButton.setAttribute("id", "play-game-button")
+  // playerRollButton.innerHTML = "ROLL DICE";
+  // var addRollButton = document.getElementById("controls");
+  // addRollButton.appendChild(playerRollButton);
+}
+
+var monopolyGame = new MonopolyGame;
+
+// $("button").click(function(e){
+//   if(this.innerHTML === "PLAY GAME"){
+    // var player1 = new Player("Player 1", "car");
+    // monopolyGame.gamePlayers.push(player1);
+    // $( ".instructions" ).toggle();
+    // monopolyGame.addPlayerHeader();
+    // monopolyGame.addPlayerStats(player1);
+    // var player2 = new Player("Player 2", "dog");
+    // monopolyGame.gamePlayers.push(player2);
+    // player1.rollDice();
+    // monopolyGame.addPlayerStats(player2);
+    // $( ".instructions" ).toggle();
+    // $(".player-info").toggle();
+    // $(this).html('ROLL DICE');
+  // }
+  
+  // if (this.innerHTML === "ROLL DICE"){
+  //   monopolyGame.turn();
+  // }
+// });
+
+// player2.propertiesOwned.push("Vermont Avenue");
 // player1.rollDice();
 // player1.move();
+window.onload = function(){
+  var playGameButton = document.getElementById('play-game-button');
+  // var player1 = new Player("Player 1", "car");
+  // monopolyGame.gamePlayers.push(player1);
+  // var player2 = new Player("Player 2", "dog");
+  // monopolyGame.gamePlayers.push(player2);
+
+  playGameButton.onclick = startGame;
+};

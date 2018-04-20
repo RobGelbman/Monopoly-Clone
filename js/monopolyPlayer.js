@@ -5,6 +5,16 @@ var ctx4 = canvas.getContext('2d');
 var yLevel = 910;
 var numberOfDice = 2;
 var diceArray = ["zero", "one", "two", "three", "four", "five", "six"];
+var map = [
+  [{x:880, y:910}, {x:780, y:910}, {x:700, y:910}, {x:620, y:910}, {x:540, y:910}, {x:460, y:910}, {x:380, y:910}, {x:300, y:910}, {x:220, y:910}, {x:140, y:910},
+  {x:0, y:910}, {x:39, y:796}, {x:39, y:716}, {x:39, y:636}, {x:39, y:556}, {x:39, y:476}, {x:39, y:396}, {x:39, y:316}, {x:39, y:236}, {x:39, y:156}, 
+  {x:39, y:46}, {x:139, y:46}, {x:219, y:46}, {x:299, y:46}, {x:379, y:46}, {x:459, y:46}, {x:539, y:46}, {x:619, y:46}, {x:699, y:46}, {x:779, y:46},
+  {x:880, y:46}, {x:880, y:161}, {x:880, y:241}, {x:880, y:321}, {x:880, y:401}, {x:880, y:481}, {x:880, y:561}, {x:880, y:641}, {x:880, y:721}, {x:880, y:801}],
+  [{x:880, y:875}, {x:780, y:875}, {x:700, y:875}, {x:620, y:875}, {x:540, y:875}, {x:460, y:875}, {x:380, y:875}, {x:300, y:875}, {x:220, y:875}, {x:140, y:875},
+    {x:0, y:875}, {x:39, y:761}, {x:39, y:681}, {x:39, y:601}, {x:39, y:521}, {x:39, y:441}, {x:39, y:361}, {x:39, y:281}, {x:39, y:201}, {x:39, y:121}, 
+    {x:39, y:11}, {x:139, y:11}, {x:219, y:11}, {x:299, y:11}, {x:379, y:11}, {x:459, y:11}, {x:539, y:11}, {x:619, y:11}, {x:699, y:11}, {x:779, y:11},
+    {x:880, y:11}, {x:880, y:126}, {x:880, y:206}, {x:880, y:286}, {x:880, y:366}, {x:880, y:446}, {x:880, y:526}, {x:880, y:606}, {x:880, y:686}, {x:880, y:786}]
+]
 
 //PLAYER OBJECT
 function Player(nameArg, tokenArg){
@@ -19,6 +29,7 @@ function Player(nameArg, tokenArg){
   this.rollAgain = false;
   this.x = 880;
   this.y = yLevel;
+  this.mapLocation = 0;
   this.currentLocation;
   this.currentPropertyIndex = -1;
   this.diceRoll = [];
@@ -40,6 +51,7 @@ Player.prototype.init = function (){
 
 //DICE FUNCTIONS
 Player.prototype.rollDice = function(){
+  that = this;
   this.diceRoll = [];
   for (x=1; x <= numberOfDice; x++){
     this.diceRoll.push(Math.ceil(Math.random() * 6));
@@ -50,7 +62,7 @@ Player.prototype.rollDice = function(){
     ctx4.clearRect(0, 0, 960, 960);
     that.displayDice()}, 500);
 
-  
+  this.move();
   return this.totalDiceRoll;
 }
 
@@ -121,20 +133,30 @@ Player.prototype.redrawOTherTokens = function(){
 // MOVE FUNCTIONS
 Player.prototype.move = function(){
   that = this;
-  if (this.y > 841 && this.x >= 140){
-    this.moveBottomRow();
-  } else if (this.x < 120 && this.y >120){
-    this.moveLeftColumn();
-  } else if (this.x < 840 && this.y < 120){
-    this.moveTopRow();
-  } else {
-    this.moveRightColumn();
+  this.mapLocation += this.totalDiceRoll;
+  console.log(this.mapLocation);
+  if (this.mapLocation > 39){
+    console.log("In MOVE IF STATEMENT")
+    that.mapLocation -= 39;
+    this.passedGo = true;
   }
+  this.x = map[1][this.mapLocation].x;
+  this.y = map[1][this.mapLocation].y;
+  // if (this.y > 841 && this.x >= 140){
+  //   this.moveBottomRow();
+  // } else if (this.x < 120 && this.y >120){
+  //   this.moveLeftColumn();
+  // } else if (this.x < 840 && this.y < 120){
+  //   this.moveTopRow();
+  // } else {
+  //   this.moveRightColumn();
+  // }
   this.updateCanvas();
   setTimeout( function(){
     ctx3.clearRect(0, 0, 960, 960);
     that.redrawOTherTokens()}, 500);
   this.currentLocation = this.findLocation(monopolyGame.boardGrid, this.x, this.y, "xMin", "xMax", "yMin", "yMax");
+  console.log("CUrrent Location is ", this.currentLocation, " X+", this.x, " Y =", this.y)
   this.checkLocationType();
 
   // IF PASSED GO, COLLECT $200
@@ -144,74 +166,77 @@ Player.prototype.move = function(){
   }
 }
 
-Player.prototype.moveBottomRow = function(){
-  while (this.totalDiceRoll > 0){
-    if (this.x > 840){      
-      this.x -= 100;
-      this.totalDiceRoll--;
-    } else if(this.x === 140){
-      this.x -= 140;
-      this.totalDiceRoll--;
-    }else if (this.x > 140 && this.x < 840){      
-      this.x -= 80;
-      this.totalDiceRoll--;
-    } else {
-      this.moveLeftColumn();
-    }
-  }
-}
+// Player.prototype.moveBottomRow = function(){
+//   for(i=0; i < this.totalDiceRoll; this.totalDiceRoll--){
+//     if (this.x > 840){      
+//       this.x -= 100;
+//       // this.totalDiceRoll--;
+//     } else if(this.x === 140){
+//       this.x -= 140;
+//       // this.totalDiceRoll--;
+//     }else if (this.x > 140 && this.x < 840){      
+//       this.x -= 80;
+//       // this.totalDiceRoll--;
+//     } else {
+//       this.moveLeftColumn();
+//     }
+    
+//   }
+// }
 
-Player.prototype.moveLeftColumn = function(){
-  while (this.totalDiceRoll > 0){
-    if (this.y > 840) {
-      this.y -= 115;
-      this.x += 39;
-      this.totalDiceRoll--;
-    } else if(this.y < 171 && this.y > 120){
-      this.y -= 110;
-      this.totalDiceRoll--;
-    } else if (this.y > 170 && this.y < 840){
-      this.y -= 80;
-      this.totalDiceRoll--;
-    } else {
-      this.moveTopRow();
-    }
-  }
-}
+// Player.prototype.moveLeftColumn = function(){
+//   for(i=0; i < this.totalDiceRoll; this.totalDiceRoll--){
+//     if (this.y > 840) {
+//       this.y -= 114;
+//       this.x += 39;
+//       // this.totalDiceRoll--;
+//     } else if(this.y < 171 && this.y > 120){
+//       this.y -= 110;
+//       // this.totalDiceRoll--;
+//     } else if (this.y > 170 && this.y < 840){
+//       this.y -= 80;
+//       // this.totalDiceRoll--;
+//     } else {
+//       this.moveTopRow();
+//     }
+    
+//   }
+// }
 
-Player.prototype.moveTopRow = function(){
-  while (this.totalDiceRoll > 0){
-    if (this.x < 120){
-      this.x += 100;
-      this.totalDiceRoll--;
-    }else if (this.x === 779){
-      this.x += 101;
-      this.totalDiceRoll--;
-    } else if (this.x > 120 && this.x < 779){
-      this.x += 80;
-      this.totalDiceRoll--;
-    } else {
-      this.moveRightColumn();
-    }
-  }
-}
+// Player.prototype.moveTopRow = function(){
+//   for(i=0; i < this.totalDiceRoll; this.totalDiceRoll--){
+//     if (this.x < 120){
+//       this.x += 100;
+//       // this.totalDiceRoll--;
+//     }else if (this.x === 779){
+//       this.x += 101;
+//       // this.totalDiceRoll--;
+//     } else if (this.x > 120 && this.x < 779){
+//       this.x += 80;
+//       // this.totalDiceRoll--;
+//     } else {
+//       this.moveRightColumn();
+//     }
+    
+//   }
+// }
 
-Player.prototype.moveRightColumn = function(){
-  while (this.totalDiceRoll > 0){
-    if (this.y < 120 || this.y === 800){
-      if (this.y === 800){
-        this.passedGo = true;
-      }
-        this.y += 115;
-        this.totalDiceRoll--;
-    } else if (this.y <800 && this.y > 120){
-      this.y += 80;
-      this.totalDiceRoll--;
-    } else {
-      this.moveTopRow();
-    }
-  }
-}
+// Player.prototype.moveRightColumn = function(){
+//   for(i=0; i < this.totalDiceRoll; this.totalDiceRoll--){
+//     if (this.y < 120 || this.y === 800){
+//       if (this.y === 800){
+//         this.passedGo = true;
+//       }
+//         this.y += 115;
+//         // this.totalDiceRoll--;
+//     } else if (this.y <800 && this.y > 120){
+//       this.y += 80;
+//       // this.totalDiceRoll--;
+//     } else {
+//       this.moveTopRow();
+//     }
+//   }
+// }
 
 
 Player.prototype.findLocation = function(gridArray, currentX, currentY, minX, maxX, minY, maxY){

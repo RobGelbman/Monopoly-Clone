@@ -79,6 +79,7 @@ body{
 .flex-container{
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .instructions{
@@ -89,12 +90,19 @@ body{
 .flex-container h1{  
   font-weight: 700;
   font-size: 3em;
+  border: 1px solid #c0e2ca;
   text-align: center;
+  padding: 10px 0 0;
+  margin-top: 20px;
+  margin-bottom: 0;
 }
 
 .instructions h3{  
   text-decoration: underline;
   text-align: center;
+}
+#roll-dice-button{
+  /* display: none; */
 }
 
 button{
@@ -110,6 +118,39 @@ button{
   font-size: 16px;
   border-radius: 4px;
   margin-bottom: 25px;
+}
+
+.player-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Player-1, .Player-2{
+  border: 1px solid #c0e2ca;
+  margin-bottom: 25px;
+  padding: 0 10px;
+}
+
+.player-info .header{
+  background-color: #0066a4;
+  color: #c0e2ca;
+  text-align: center;
+  border: 1px solid #c0e2ca;
+  margin: 10px auto;
+  padding: 0;
+  width: 50%;
+}
+
+.flex-row{
+  flex-direction: row;
+}
+.player-header{
+  /* flex-flow: row; */
+  flex-direction: row;
+  border: 1px solid #c0e2ca;
+  margin-bottom: 25px;
+  padding: 0 10px;
 }
 
 /* #playerInterface{
