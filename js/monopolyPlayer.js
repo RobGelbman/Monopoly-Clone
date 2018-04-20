@@ -156,7 +156,7 @@ Player.prototype.move = function(){
     ctx3.clearRect(0, 0, 960, 960);
     that.redrawOTherTokens()}, 500);
   this.currentLocation = this.findLocation(monopolyGame.boardGrid, this.x, this.y, "xMin", "xMax", "yMin", "yMax");
-  console.log("CUrrent Location is ", this.currentLocation, " X+", this.x, " Y =", this.y)
+  // console.log("CUrrent Location is ", this.currentLocation, " X+", this.x, " Y =", this.y)
   this.checkLocationType();
 
   // IF PASSED GO, COLLECT $200

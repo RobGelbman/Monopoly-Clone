@@ -79,51 +79,9 @@ function MonopolyGame(){
   this.gamePlayers = [];
   this.currentTurn = 0;
 
-  // MonopolyGame.prototype.startGame = function(){
-  //   var deleteNode = document.getElementById("instructions");
-  //   deleteNode.parentNode.removeChild(deleteNode);
-  //   var deleteNode = document.getElementById("play-game-button");
-  //   deleteNode.parentNode.removeChild(deleteNode);
-  //   this.deleteRulesNode();
-  //   // this.addPlayerHeader();
-  // }
-
-  // MonopolyGame.prototype.deleteRulesNode = function(){
-  //   var deleteNode = document.getElementById("instructions");
-  //   deleteNode.parentNode.removeChild(deleteNode);
-  //   var deleteNode = document.getElementById("play-game-button");
-  //   deleteNode.parentNode.removeChild(deleteNode);
-  // }
-  
-  // MonopolyGame.prototype.addPlayerHeader = function(){
-  //   var headerHtml = "<div class = 'header'><h2>PLAYER INFO</h2></div>"
-  //   // $('.player-info').append(headerHtml);
-  // }
+ 
 
   
-  
-  // MonopolyGame.prototype.addPlayerStats = function(player){
-  //   var playerstats = "<div class='" + player.name.split(" ").join("-") + "'>";
-  //   playerstats += "<div class='player-header'>";
-  //   playerstats += "<img src='images/tokens/" + player.token + ".png'>";
-  //   playerstats += "<h2>" + player.name + "</h2>";
-  //   playerstats += "<h2>$" + player.money + "</h2>";
-  //   playerstats += "</div>";
-  //   playerstats += "<div class='properties'>";
-  //   playerstats += "</div>";
-  //   playerstats += "</div>";
-
-  //   $('.player-info').append(playerstats);
-  // }
-
-  // MonopolyGame.prototype.turn = function(){
-  //   if (this.currentTurn === this.gamePlayers.length){
-  //     this.currentTurn = 0
-  //   }
-
-  //   this.gamePlayers[this.currentTurn].rollDice();
-  //   this.currentTurn++;
-  // }
 
 }
 
@@ -169,7 +127,6 @@ function addPlayerHeader(){
   parent = document.getElementsByClassName("player-info");
   parent[0].append(headerHtml);
   addPlayerStats();
-  // $('.player-info').append(headerHtml);
 }
 
 
@@ -206,43 +163,22 @@ function addPlayerStats(){
 
 function addRollButton(){
   var rollBTN = document.getElementById("roll-dice-button");
-  rollBTN.style.display = "inline"
-  // var playerRollButton = document.createElement("button");
-  // playerRollButton.setAttribute("class", "roll-dice");
-  // playerRollButton.setAttribute("type", "button")
-  // playerRollButton.setAttribute("id", "play-game-button")
-  // playerRollButton.innerHTML = "ROLL DICE";
-  // var addRollButton = document.getElementById("controls");
-  // addRollButton.appendChild(playerRollButton);
+  rollBTN.style.display = "inline";
 }
 
-var monopolyGame = new MonopolyGame;
+function turn(){
+  if (monopolyGame.currentTurn === monopolyGame.gamePlayers.length){
+    monopolyGame.currentTurn = 0
+  }
 
-// $("button").click(function(e){
-//   if(this.innerHTML === "PLAY GAME"){
-    // var player1 = new Player("Player 1", "car");
-    // monopolyGame.gamePlayers.push(player1);
-    // $( ".instructions" ).toggle();
-    // monopolyGame.addPlayerHeader();
-    // monopolyGame.addPlayerStats(player1);
-    // var player2 = new Player("Player 2", "dog");
-    // monopolyGame.gamePlayers.push(player2);
-    // player1.rollDice();
-    // monopolyGame.addPlayerStats(player2);
-    // $( ".instructions" ).toggle();
-    // $(".player-info").toggle();
-    // $(this).html('ROLL DICE');
-  // }
-  
-  // if (this.innerHTML === "ROLL DICE"){
-  //   monopolyGame.turn();
-  // }
-// });
+  monopolyGame.gamePlayers[monopolyGame.currentTurn].rollDice();
+  monopolyGame.currentTurn++;
+}
 
-// player2.propertiesOwned.push("Vermont Avenue");
-// player1.rollDice();
-// player1.move();
 window.onload = function(){
   var playGameButton = document.getElementById('play-game-button');
   playGameButton.onclick = startGame;
+
+  var rollDiceButton = document.getElementById('roll-dice-button');
+  rollDiceButton.onclick = turn;
 };
