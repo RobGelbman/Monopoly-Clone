@@ -3,7 +3,7 @@ function MonopolyGame(){
     {name: "Mediterranean Avenue", type: "street", colorGroup: "indigo", cost: 60, rent: [2, 10, 30, 90, 160, 250], houseCost: 50, hotelCost: 50, housesOwned:0, hotelsOwned: 0, mortgageValue: 30, isMortgaged: false, isOwned:false},
     {name: "Baltic Avenue", type: "street", colorGroup: "indigo", cost: 60, rent: [4, 20, 60, 180, 320, 450], houseCost: 50, hotelCost: 50, housesOwned:0, hotelsOwned: 0, mortgageValue: 30, isMortgaged: false, isOwned:false},
     {name: "Oriental Avenue", type: "street", colorGroup: "lightBlue", cost: 100, rent: [6, 30, 90, 270, 400, 550], houseCost: 50, hotelCost: 50, housesOwned:0, hotelsOwned: 0, mortgageValue: 50, isMortgaged: false, isOwned:false},
-    {name: "Vermont Avenue", type: "street", colorGroup: "lightBlue", cost: 100, rent: [6, 30, 90, 270, 400, 550], houseCost: 50, hotelCost: 50, housesOwned:0, hotelsOwned: 0, mortgageValue: 50, isMortgaged: false, isOwned:true},
+    {name: "Vermont Avenue", type: "street", colorGroup: "lightBlue", cost: 100, rent: [6, 30, 90, 270, 400, 550], houseCost: 50, hotelCost: 50, housesOwned: 0, hotelsOwned: 0, mortgageValue: 50, isMortgaged: false, isOwned:true},
     {name: "Connecticut Avenue", type: "street", colorGroup: "lightBlue", cost: 120, rent: [8, 40, 100, 300, 450, 600], houseCost: 50, hotelCost: 50, housesOwned:0, hotelsOwned: 0, mortgageValue: 60, isMortgaged: false, isOwned:false},
     {name: "St. Charles Place", type: "street", colorGroup: "pink", cost: 140, rent: [10, 50, 150, 450, 625, 750], houseCost: 100, hotelCost: 100, housesOwned:0, hotelsOwned: 0, mortgageValue: 70, isMortgaged: false, isOwned:false},
     {name: "States Avenue", type: "street", colorGroup: "pink", cost: 140, rent: [10, 50, 150, 450, 625, 750], houseCost: 100, hotelCost: 100, housesOwned:0, hotelsOwned: 0, mortgageValue: 70, isMortgaged: false, isOwned:false},
@@ -39,7 +39,7 @@ function MonopolyGame(){
     {name: "Reading Railroad", xMin: 441, xMax: 520, yMin: 841, yMax: 960}, 
     {name: "Oriental Avenue", xMin: 361, xMax: 440, yMin: 841, yMax: 960}, 
     {name: "Chance", xMin: 281, xMax: 360, yMin: 841, yMax: 960}, 
-    {name: "Vermont Aveue", xMin: 201, xMax: 280, yMin: 841, yMax: 960}, 
+    {name: "Vermont Avenue", xMin: 201, xMax: 280, yMin: 841, yMax: 960}, 
     {name: "Connecticut Avenue", xMin: 121, xMax: 200, yMin: 841, yMax: 960}, 
     {name: "Just Visiting", xMin: 0, xMax: 120, yMin: 841, yMax: 960}, 
     {name: "St. Charles Place", xMin: 1, xMax: 120, yMin: 761, yMax: 840}, 
@@ -86,5 +86,5 @@ monopolyGame.gamePlayers.push(player1);
 var player2 = new Player("Player 2", "dog");
 monopolyGame.gamePlayers.push(player2);
 player2.propertiesOwned.push("Vermont Avenue");
-player1.rollDice();
-player1.move();
+// player1.rollDice();
+// player1.move();

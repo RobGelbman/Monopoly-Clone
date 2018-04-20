@@ -6,50 +6,68 @@ body{
   background-size: cover;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: #c0e2ca;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0066a4; 
+  border-radius: 10px;
+  border: 1px solid #c0e2ca;
+}
+
+::-webkit-scrollbar-button{
+  background: #0066a4; 
+  border-radius: 10px;
+  border: 1px solid #c0e2ca;
+}
+
 .canvas-container{
   /* position: relative; */
-  height: 1000px;
-  width: 2000px;
+  /* height: 1000px;
+  width: 2000px; */
   
 }
 
 #monopolyDisplay{
   position: absolute;
-  left: 50px;
+  left: 100px;
   top: 10px;
-  z-index: 2;
+  z-index: 3;
 }
 
 #monopolyPlayer{
   position: absolute;
-  left: 50px;
+  left: 100px;
   top: 10px;
   z-index: 2;
 }
 
 #monopolyBoardImages{
   position: absolute;
-  left: 50px;
+  left: 100px;
   top: 10px;
   z-index: 1;
 }
 
 #monopolyBoard{
   position: absolute;
-  left: 50px;
+  left: 100px;
   top: 10px;
   z-index: 0;
 }
 
 #playerInterface{
   position: absolute;
-  left: 1050px;
+  left: 1100px;
   top: 10px;
   height: 958px;
-  width:800px;
-  background-color: rgba(0, 0, 0, 0.5);
-  border: 2px dotted #c0e2ca;
-  color: white;
+  width:600px;
+  padding: 0 15px;
+  background-color: #0066a4;
+  border: 2px solid #c0e2ca;
+  color: #c0e2ca;
   display: flex;
   font-family: "Josefin Sans";
 }
@@ -68,24 +86,26 @@ body{
   flex-grow: 1;
 }
 
-.instructions h1{  
+.flex-container h1{  
   font-weight: 700;
   font-size: 3em;
-  
+  text-align: center;
 }
 
 .instructions h3{  
   text-decoration: underline;
+  text-align: center;
 }
 
 button{
-  background-color: #13a857; 
+  background-color: #c0e2ca; 
   font-family: 'Josefin Sans';
-  border: 1px solid #FFF;
-  color: #FFF;
+  /* border: 1px solid #FFF; */
+  color:  #0066a4;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
+  font-weight: 700;
   display: inline-block;
   font-size: 16px;
   border-radius: 4px;
