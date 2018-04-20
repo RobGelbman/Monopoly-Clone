@@ -148,9 +148,9 @@ button{
 .player-header{
   /* flex-flow: row; */
   flex-direction: row;
-  border: 1px solid #c0e2ca;
+  /* border: 1px solid #c0e2ca;
   margin-bottom: 25px;
-  padding: 0 10px;
+  padding: 0 10px; */
 }
 
 /* #playerInterface{

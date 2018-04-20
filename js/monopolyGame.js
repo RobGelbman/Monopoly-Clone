@@ -142,13 +142,13 @@ function startGame(){
   // var timeoutId = setTimeout(function () {
     deleteRulesNode();
     addPlayerHeader();
+    console.log(monopolyGame.gamePlayers);
     
-    
-    rollBTN.style.visibility = "show";
+    // rollBTN.style.visibility = "show";
   // }, 1000);
   // deleteRulesNode();
   // addPlayerHeader();
-  // addRollButton();
+  addRollButton();
  
   
 }
@@ -175,11 +175,13 @@ function addPlayerHeader(){
 
 
 function addPlayerStats(){
-  for (x=0; 0 < monopolyGame.gamePlayers.length; x++){
+  
+  console.log(monopolyGame.gamePlayers);
+  var tempName;
+  for (var x = 0; x < monopolyGame.gamePlayers.length; x++){
+    tempName = monopolyGame.gamePlayers[x].name
     var playerInventory = document.createElement("div");
-    var tempName = monopolyGame.gamePlayers[x].name
-    console.log(monopolyGame.gamePlayers[x].name);
-    playerInventory.setAttribute("class", tempName)
+    playerInventory.setAttribute("class", tempName.split(" ").join("-"))
     var playerHeader = document.createElement("div");
     playerHeader.setAttribute("class", "player-header");
     var playerImg = document.createElement("img");
@@ -242,10 +244,5 @@ var monopolyGame = new MonopolyGame;
 // player1.move();
 window.onload = function(){
   var playGameButton = document.getElementById('play-game-button');
-  // var player1 = new Player("Player 1", "car");
-  // monopolyGame.gamePlayers.push(player1);
-  // var player2 = new Player("Player 2", "dog");
-  // monopolyGame.gamePlayers.push(player2);
-
   playGameButton.onclick = startGame;
 };
