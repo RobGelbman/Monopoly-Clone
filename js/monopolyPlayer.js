@@ -134,9 +134,7 @@ Player.prototype.redrawOTherTokens = function(){
 Player.prototype.move = function(){
   that = this;
   this.mapLocation += this.totalDiceRoll;
-  console.log(this.mapLocation);
   if (this.mapLocation > 39){
-    console.log("In MOVE IF STATEMENT")
     that.mapLocation -= 39;
     this.passedGo = true;
   }
@@ -156,13 +154,14 @@ Player.prototype.move = function(){
     ctx3.clearRect(0, 0, 960, 960);
     that.redrawOTherTokens()}, 500);
   this.currentLocation = this.findLocation(monopolyGame.boardGrid, this.x, this.y, "xMin", "xMax", "yMin", "yMax");
-  // console.log("CUrrent Location is ", this.currentLocation, " X+", this.x, " Y =", this.y)
   this.checkLocationType();
 
   // IF PASSED GO, COLLECT $200
   if (this.passedGo === true){
     this.money += 200;
     this.passedGo = false;
+    var goMoney = document.getElementById(this.name.split(" ").join("-"))
+    goMoney.innerHTML = this.money;
   }
 }
 
@@ -272,9 +271,7 @@ Player.prototype.checkLocationType = function(){
 
 Player.prototype.propertyStatus = function(){
   if (monopolyGame.properties[this.currentPropertyIndex].isOwned && !(this.propertiesOwned.includes(monopolyGame.properties[this.currentPropertyIndex].name))){
-    console.log("IN FIRST IF on PROPERTY STATUS")
     if (!(monopolyGame.properties[this.currentPropertyIndex].isMortgaged)){
-      console.log("IN PAY RENT IF CONDITON")
       //CALL PAY RENT FUNCTION
       this.calculateRent(monopolyGame.properties[this.currentPropertyIndex].name, monopolyGame.properties[this.currentPropertyIndex].rent, monopolyGame.properties[this.currentPropertyIndex].housesOwned, monopolyGame.properties[this.currentPropertyIndex].hotelsOwned);
     }
@@ -295,10 +292,13 @@ Player.prototype.canAfford = function(itemCost){
   return false;
 }
 
-Player.prototype.buyProperty = function(propertyName, propertyCost){  
+Player.prototype.buyProperty = function(propertyName, propertyCost){
+    console.log(this.name)  
     this.propertiesOwned.push(propertyName);
     this.money -= propertyCost;
     monopolyGame.properties[this.currentPropertyIndex].isOwned = true;
+    var newTotal = document.getElementById(this.name.split(" ").join("-"));
+    newTotal.innerHTML = "$"+ this.money;
 
 }
 
@@ -324,7 +324,7 @@ Player.prototype.calculateRent = function(propertyNameArg, rentArray, housesArg,
 }
 
 Player.prototype.payRent = function(ownerIndex, totalRent){
-  console.log(ownerIndex, totalRent);
+  // console.log(ownerIndex, totalRent);
   monopolyGame.gamePlayers[ownerIndex].money += totalRent;
   this.money -= totalRent;
 }

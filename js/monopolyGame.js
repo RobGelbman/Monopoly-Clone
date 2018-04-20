@@ -100,7 +100,7 @@ function startGame(){
   // var timeoutId = setTimeout(function () {
     deleteRulesNode();
     addPlayerHeader();
-    console.log(monopolyGame.gamePlayers);
+    
     
     // rollBTN.style.visibility = "show";
   // }, 1000);
@@ -133,7 +133,7 @@ function addPlayerHeader(){
 
 function addPlayerStats(){
   
-  console.log(monopolyGame.gamePlayers);
+  
   var tempName;
   for (var x = 0; x < monopolyGame.gamePlayers.length; x++){
     tempName = monopolyGame.gamePlayers[x].name
